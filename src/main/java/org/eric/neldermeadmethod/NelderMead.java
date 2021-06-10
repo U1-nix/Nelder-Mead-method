@@ -24,7 +24,7 @@ public abstract class NelderMead {
 
         Vertex p0 = new Vertex(arguments, 0.0);
 
-        // create Vertex'es according to p0
+        // create Vertexes according to p0
         List<Vertex> startingValues = new ArrayList<>(initialize(p0));
 
         // А - find function values

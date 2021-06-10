@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vertex implements Cloneable{
-    private List<Double> coordinates;
+    private final List<Double> coordinates;
     private double functionValue;
 
     public Vertex(List<Double> coordinates, double functionValue) {
@@ -12,6 +12,7 @@ public class Vertex implements Cloneable{
         this.functionValue = functionValue;
     }
 
+    // TODO: remove cloning
     @Override
     public Vertex clone() {
         List<Double> coordinates = new ArrayList<>(this.getCoordinates());

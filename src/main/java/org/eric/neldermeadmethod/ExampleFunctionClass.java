@@ -8,9 +8,6 @@ public class ExampleFunctionClass implements Minimizable {
     private ExampleFunctionClass() {}
 
     public static ExampleFunctionClass getInstance() {
-        // TODO: find out what is this THING
-        //return Objects.requireNonNullElseGet(instance, ExampleFunctionClass::new);
-
         return instance;
     }
 
