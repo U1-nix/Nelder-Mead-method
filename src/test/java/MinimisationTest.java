@@ -1,5 +1,5 @@
-import eric.Minimizable;
-import eric.NelderMead;
+import org.eric.neldermeadmethod.Minimizable;
+import org.eric.neldermeadmethod.NelderMead;
 import org.junit.jupiter.api.Test;
 import testingFunctions.AxisParallelHyperEllipsoidFunction;
 import testingFunctions.DeJong;

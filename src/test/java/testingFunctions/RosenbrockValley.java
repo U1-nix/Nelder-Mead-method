@@ -1,6 +1,6 @@
 package testingFunctions;
 
-import eric.Minimizable;
+import org.eric.neldermeadmethod.Minimizable;
 
 import java.util.List;
 

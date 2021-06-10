@@ -1,4 +1,4 @@
-package eric;
+package org.eric.neldermeadmethod;
 
 import java.util.List;
 

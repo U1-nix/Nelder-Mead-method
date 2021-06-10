@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.eric</groupId>
-    <artifactId>Nelder-Mead-method</artifactId>
+    <artifactId>nelder-mead-method</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
