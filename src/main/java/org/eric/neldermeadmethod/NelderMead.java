@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,7 +39,9 @@ public abstract class NelderMead {
             it++;
 
             // Б - sort by function value; fh > fg > fl
-            sort(startingValues);
+            //sort(startingValues);
+            startingValues.sort(Comparator.comparing(Vertex::getFunctionValue).reversed());
+
             int maxVertex = 0;
             int secondMaxVertex = 1;
             int minVertex = startingValues.size() - 1;
@@ -146,23 +149,6 @@ public abstract class NelderMead {
 
         // returning minimal of all minimised vertexes
         return startingValues.get(startingValues.size() - 1).getCoordinates();
-    }
-
-    // TODO: change sorting algorithm
-    public static void sort(List<Vertex> vertexes) {
-        // simple descending bubble sort
-        boolean sorted;
-        do {
-            sorted = true;
-            for (int i = 0; i < vertexes.size() - 1; i++) {
-                if (vertexes.get(i).getFunctionValue() < vertexes.get(i + 1).getFunctionValue()) {
-                    Vertex tmp = vertexes.get(i);
-                    vertexes.set(i, new Vertex(vertexes.get(i + 1)));
-                    vertexes.set(i + 1, new Vertex(tmp));
-                    sorted = false;
-                }
-            }
-        } while (!sorted);
     }
 
     private static List<Vertex> initialize(Vertex p0) {
