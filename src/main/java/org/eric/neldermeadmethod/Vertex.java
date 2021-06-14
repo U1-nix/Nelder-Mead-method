@@ -3,8 +3,10 @@ package org.eric.neldermeadmethod;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertex implements Cloneable{
+public class Vertex{
+    // mutable
     private final List<Double> coordinates;
+    // primitive so immutable
     private double functionValue;
 
     public Vertex(List<Double> coordinates, double functionValue) {
@@ -12,16 +14,16 @@ public class Vertex implements Cloneable{
         this.functionValue = functionValue;
     }
 
-    // TODO: remove cloning
-    @Override
-    public Vertex clone() {
-        List<Double> coordinates = new ArrayList<>(this.getCoordinates());
-        return new Vertex(coordinates, this.getFunctionValue());
+    // Copy constructor
+    public Vertex(Vertex vertex) {
+        this.coordinates = new ArrayList<>(vertex.getCoordinates());
+        this.functionValue = vertex.getFunctionValue();
     }
 
     public double getFunctionValue() {
         return functionValue;
     }
+
 
     public void setFunctionValue(double functionValue) {
         this.functionValue = functionValue;

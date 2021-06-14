@@ -60,7 +60,7 @@ public abstract class NelderMead {
                     // fe < fl
 
                     // a) - replace xh with xe
-                    startingValues.set(maxVertex, strainedApex.clone());
+                    startingValues.set(maxVertex, new Vertex(strainedApex));
 
                     if (checkPrecision(startingValues)) {
                         // stop
@@ -71,7 +71,7 @@ public abstract class NelderMead {
                     // fe >= fl
 
                     // б) - replace xh with xr
-                    startingValues.set(maxVertex, reflectedApex.clone());
+                    startingValues.set(maxVertex, new Vertex(reflectedApex));
 
                     if (checkPrecision(startingValues)) {
                         // stop
@@ -87,7 +87,7 @@ public abstract class NelderMead {
                     // fr <= fg
 
                     // Д.2) - replace xh with xr
-                    startingValues.set(maxVertex, reflectedApex.clone());
+                    startingValues.set(maxVertex, new Vertex(reflectedApex));
 
                     if (checkPrecision(startingValues)) {
                         // stop
@@ -100,7 +100,7 @@ public abstract class NelderMead {
                         // fr < fh
 
                         // E.1) - replace xh with xr
-                        startingValues.set(maxVertex, reflectedApex.clone());
+                        startingValues.set(maxVertex, new Vertex(reflectedApex));
                     }
 
                     // fr >= fh
@@ -112,7 +112,7 @@ public abstract class NelderMead {
                         // fc <= fh
 
                         // Ж.1) - replace xh with xc;
-                        startingValues.set(maxVertex, compressedApex.clone());
+                        startingValues.set(maxVertex, new Vertex(compressedApex));
 
                         if (checkPrecision(startingValues)) {
                             // stop
@@ -124,7 +124,7 @@ public abstract class NelderMead {
                         // З - double downsizing
                         for (int i = 0; i < startingValues.size(); i++) {
                             if (i != minVertex) {
-                                startingValues.set(i, downsize(startingValues.get(i), startingValues.get(minVertex)).clone());
+                                startingValues.set(i, downsize(startingValues.get(i), new Vertex(startingValues.get(minVertex))));
                                 startingValues.get(i).setFunctionValue(f.calculate(startingValues.get(i).getCoordinates()));
                             }
                         }
@@ -148,6 +148,7 @@ public abstract class NelderMead {
         return startingValues.get(startingValues.size() - 1).getCoordinates();
     }
 
+    // TODO: change sorting algorithm
     public static void sort(List<Vertex> vertexes) {
         // simple descending bubble sort
         boolean sorted;
@@ -156,8 +157,8 @@ public abstract class NelderMead {
             for (int i = 0; i < vertexes.size() - 1; i++) {
                 if (vertexes.get(i).getFunctionValue() < vertexes.get(i + 1).getFunctionValue()) {
                     Vertex tmp = vertexes.get(i);
-                    vertexes.set(i, vertexes.get(i + 1).clone());
-                    vertexes.set(i + 1, tmp.clone());
+                    vertexes.set(i, new Vertex(vertexes.get(i + 1)));
+                    vertexes.set(i + 1, new Vertex(tmp));
                     sorted = false;
                 }
             }
@@ -168,7 +169,7 @@ public abstract class NelderMead {
         List<Vertex> startingValues = new LinkedList<>();
         startingValues.add(p0);
         for (int i = 1; i <= p0.getCoordinates().size(); i++) {
-            Vertex p = p0.clone();
+            Vertex p = new Vertex(p0);
             double x = p.getCoordinates().get(i - 1);
             p.getCoordinates().remove(i - 1);
             x++;
