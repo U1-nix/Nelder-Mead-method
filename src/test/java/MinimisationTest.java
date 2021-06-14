@@ -74,7 +74,7 @@ public class MinimisationTest {
         minimisedFunctionValue = rosenbrockValley.calculate(minimisedArguments);
         condition = (minimisedFunctionValue < 3.0) && (minimisedFunctionValue > -3.0);
 
-        // Rosenbrock's valley minimised function value test (precision +/- 0.5)
+        // Rosenbrock's valley minimised function value test (precision +/- 3.0)
         assertTrue(condition);
     }
 }
