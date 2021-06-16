@@ -9,4 +9,4 @@ This is an implementation of simplex based function minimising algorithm.
 * Test functions for optimization needs, Marcin Molga, Czesław Smutnicki, 2005: pages 2 - 4, 6 
 
 
-# Use in any way you want, but leave a link on this repository.
+# Use in any way you want, but leave a link to this repository.
